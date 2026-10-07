@@ -89,7 +89,7 @@ Change only what this guide tells you to, then **File > Save** (Ctrl+S) and clos
 2. Click the green **`<> Code`** button, then **Download ZIP**.
 3. Open your **Downloads** folder, right-click the ZIP file, and choose **Extract All…**
 4. Extract it to `C:\` so you get a folder like `C:\VSCP_trading_agent-main`.
-5. **Rename** the folder to `C:\VSCP_trading_agent` (right-click > Rename). A short path without spaces avoids problems.
+
 
 From now on, "the agent's folder" means `C:\VSCP_trading_agent`.
 
