@@ -49,7 +49,7 @@ class Assumptions:
     model_start_date: date
     po_advance_rate: float
     opening_loan_balance: float
-    opening_bank_cash: float  # total bank cash, Cash!I29 for Inceptua (the sample used I28; docs/NEXT_STEPS.md, question 10)
+    opening_bank_cash: float  # total bank cash, Cash!I29 for Inceptua (the sample used I28; docs/HOW_IT_WORKS.md, section 6)
 
 
 @dataclass

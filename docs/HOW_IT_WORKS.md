@@ -2,7 +2,7 @@
 
 A plain-English guide for the VSCP team: what the agent does, what is finished at this stage, what it can't do yet, and what VSCP needs to provide to turn it into a finished product.
 
-For installation, see the main [`README.md`](../README.md). For what the project needs next and the open questions, see [`NEXT_STEPS.md`](NEXT_STEPS.md).
+For installation, see the main [`README.md`](../README.md). For the next stage (running it safely on an always-on PC or in the cloud, connected to VSCP's Microsoft 365 email and shared drive), see [`NEXT_STEPS.md`](NEXT_STEPS.md).
 
 ---
 
@@ -146,13 +146,20 @@ flowchart LR
 | **One report at a time** | 20 companies arriving at once take about 2 hours | Process 2–3 in parallel on a dedicated machine |
 | **Only the trading-update template** | A completely different kind of report (e.g. a monthly board pack) needs new instructions and checks | New "skill" per report type |
 | **No deadline alerts** | No "Company X hasn't sent its file by Monday" email (a deliberate choice for now) | Add if VSCP wants it |
-| **The opening bank cash question** | The Cash Schedule uses the company's total bank cash; the sample used one account | VSCP answers [`NEXT_STEPS.md`](NEXT_STEPS.md), question 10 |
+| **The opening bank cash question** | The Cash Schedule uses the company's total bank cash; the sample used one account | VSCP answers the question below |
 | **Data goes to Anthropic** | Each week's workbook is sent to Anthropic's API | VSCP confirms this fits its data policy |
+
+**The opening bank cash question, in detail.** In VSCP's sample report, the Cash Schedule's opening bank cash is `Cash!I28`: **one bank account** (Inceptua NL, Citi Bank, about EUR 109k). The agent uses `Cash!I29`, **total cash at operating companies** (about EUR 18.5M), which matches the balance sheet. With I28, every projected bank-cash balance is about EUR 18.4M lower. To confirm:
+- Was I28 a slip, or does the schedule deliberately track one entity's account?
+- Should bank cash open at the model start date (1 June 2026) rather than at the weekly snapshot? Opening at the snapshot and then adding the flows since 1 June may count those months twice.
+- Should restricted cash, or Holdco / "Pharma Model" cash, be included?
+
+If I28 was intended, it's a one-line change in the agent.
 
 ## 7. What VSCP needs to provide
 
 **Answers and decisions**
-1. **The opening bank cash question** ([`NEXT_STEPS.md`](NEXT_STEPS.md), questions 10–11): total bank cash or one account, and whether it should open at the model start date.
+1. **The opening bank cash question** (section 6): total bank cash or one account, and whether it should open at the model start date.
 2. **Data policy approval** for sending the weekly workbooks to Anthropic's API under VSCP's own Anthropic account.
 3. **Who reviews and approves** reports, and whether some reviewers should see only some companies.
 4. **One house style or each company's own look** for the generated tabs.

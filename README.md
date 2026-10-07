@@ -376,7 +376,7 @@ python -m agent process "C:\path\to\Trading_update_CW38_2026.xlsx" --company Inc
 | File | For whom | Why it's here |
 |---|---|---|
 | [`HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md) | Anyone at VSCP | Plain-English explanation with diagrams: what the agent does, what's finished, its limits, and what VSCP needs to provide to make it a full product |
-| [`NEXT_STEPS.md`](docs/NEXT_STEPS.md) | VSCP management, the deal team and IT | What the project needs to move forward and why, why it was tested on Gmail rather than Microsoft 365, what switching to Microsoft 365 takes, and the questions VSCP needs to answer to continue |
+| [`NEXT_STEPS.md`](docs/NEXT_STEPS.md) | VSCP management and IT | The next stage: running the agent safely on an always-on PC or in the cloud, a secure connection to Microsoft 365 email (and why it was tested on Gmail), a secure connection to the shared drive, what's needed from VSCP, and the questions to answer |
 
 **Why there is no `samples` folder:** the sample workbooks VSCP provided contain a portfolio company's real financial figures. The agent doesn't need them to run (the report layout and look are built into the program), so they are deliberately left out of this download.
 
@@ -388,4 +388,4 @@ python -m agent process "C:\path\to\Trading_update_CW38_2026.xlsx" --company Inc
 - **What leaves the PC:** each run sends that week's workbook (and last week's, for the comparison) to Anthropic's API. Nothing else on the drive is sent. Check this fits VSCP's data policy.
 - **The shared drive is only added to:** the agent saves new files and never overwrites or deletes anything.
 - **Claude works on copies** in a sealed folder on this PC. It cannot reach the drive, the mailbox or the internet.
-- **To confirm with VSCP:** the Cash Schedule opens bank cash from the company's **total** bank cash, not the single account the sample used. See [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md), question 10.
+- **To confirm with VSCP:** the Cash Schedule opens bank cash from the company's **total** bank cash, not the single account the sample used. See [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md), section 6.

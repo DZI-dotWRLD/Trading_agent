@@ -65,7 +65,7 @@ INCEPTUA_MAP: dict = {
     "report_date": {"sheet": "summary", "cell": "D2"},
     "cash_date": {"sheet": "cash", "cell": "C4"},
     # Total bank cash (it ties to the balance sheet's Cash). VSCP's sample output opens from Cash!I28, a single
-    # account (Inceptua NL, about EUR 109k); corrected here, see docs/NEXT_STEPS.md, question 10.
+    # account (Inceptua NL, about EUR 109k); corrected here, see docs/HOW_IT_WORKS.md, section 6.
     "opening_bank_cash": {"sheet": "cash", "label": "Total Cash at Operating Companies", "label_col": "B",
                           "value_col": "I"},
     "orderbook": {"header_row": 7, "headers": {
