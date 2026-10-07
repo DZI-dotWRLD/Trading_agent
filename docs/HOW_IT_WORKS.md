@@ -2,7 +2,7 @@
 
 A plain-English guide for the VSCP team: what the agent does, what is finished at this stage, what it can't do yet, and what VSCP needs to provide to turn it into a finished product.
 
-For installation, see the main [`README.md`](../README.md). For the next stage (running it safely on an always-on PC or in the cloud, connected to VSCP's Microsoft 365 email and shared drive), see [`NEXT_STEPS.md`](NEXT_STEPS.md).
+For installation, see the main [`README.md`](../README.md). For what the project needs next and the open questions, see [`NEXT_STEPS.md`](NEXT_STEPS.md).
 
 ---
 
@@ -24,11 +24,11 @@ Every week, each portfolio company emails VSCP an Excel "trading update". Today 
 
 ```mermaid
 flowchart TD
-    A["Portfolio company emails its weekly Excel file"] --> B{"Is the sender on a company's list,<br/>and is the file named like a trading update?"}
+    A[" Portfolio company emails its weekly Excel file"] --> B{"Is the sender on a company's list,<br/>and is the file named like a trading update?"}
     B -- No --> B1["Ignored and logged.<br/>Nothing else happens."]
     B -- Yes --> C["Source file saved to the company's folder<br/>on the shared drive (add only, never overwrites)"]
     C --> D{"Is last week's report approved?"}
-    D -- "Not yet" --> D1["On hold, email to the team.<br/>Starts by itself once last week is approved."]
+    D -- "Not yet" --> D1["⏸ On hold, email to the team.<br/>Starts by itself once last week is approved."]
     D1 -.-> D
     D -- Yes --> E["Copy the file into a sealed work folder"]
     E --> F{"Does the agent already know<br/>this company's Excel layout?"}
@@ -41,7 +41,7 @@ flowchart TD
     I1 -- Yes --> G
     I1 -- "No, failed twice" --> X["ACTION NEEDED email with the reason.<br/>Nothing saved to the drive."]
     I -- "Passes" --> J["Review queue (on this PC, not on the drive)<br/>+ 'Review needed' email with the report attached"]
-    J --> K{" A team member reviews it on the dashboard"}
+    J --> K{"A team member reviews it on the dashboard"}
     K -- Reject --> K1["'Rejected, not saved' email.<br/>Nothing saved to the drive."]
     K -- "Approve and publish" --> L["Service confirms the file is exactly the one that passed"]
     L --> M["Report saved next to the source file<br/>+ 'Approved and saved' email"]
@@ -146,69 +146,9 @@ flowchart LR
 | **One report at a time** | 20 companies arriving at once take about 2 hours | Process 2–3 in parallel on a dedicated machine |
 | **Only the trading-update template** | A completely different kind of report (e.g. a monthly board pack) needs new instructions and checks | New "skill" per report type |
 | **No deadline alerts** | No "Company X hasn't sent its file by Monday" email (a deliberate choice for now) | Add if VSCP wants it |
-| **The opening bank cash question** | The Cash Schedule uses the company's total bank cash; the sample used one account | VSCP answers the question below |
-| **Data goes to Anthropic** | Each week's workbook is sent to Anthropic's API | VSCP confirms this fits its data policy |
+| **The opening bank cash question** | The Cash Schedule uses the company's total bank cash; the sample used one account | VSCP answers [`NEXT_STEPS.md`](NEXT_STEPS.md), question 10 |
 
-**The opening bank cash question, in detail.** In VSCP's sample report, the Cash Schedule's opening bank cash is `Cash!I28`: **one bank account** (Inceptua NL, Citi Bank, about EUR 109k). The agent uses `Cash!I29`, **total cash at operating companies** (about EUR 18.5M), which matches the balance sheet. With I28, every projected bank-cash balance is about EUR 18.4M lower. To confirm:
-- Was I28 a slip, or does the schedule deliberately track one entity's account?
-- Should bank cash open at the model start date (1 June 2026) rather than at the weekly snapshot? Opening at the snapshot and then adding the flows since 1 June may count those months twice.
-- Should restricted cash, or Holdco / "Pharma Model" cash, be included?
 
-If I28 was intended, it's a one-line change in the agent.
 
-## 7. What VSCP needs to provide
 
-**Answers and decisions**
-1. **The opening bank cash question** (section 6): total bank cash or one account, and whether it should open at the model start date.
-2. **Data policy approval** for sending the weekly workbooks to Anthropic's API under VSCP's own Anthropic account.
-3. **Who reviews and approves** reports, and whether some reviewers should see only some companies.
-4. **One house style or each company's own look** for the generated tabs.
-5. Whether VSCP wants **missing-file / deadline alerts**.
 
-**Information, per portfolio company**
-6. The **folder name** on the shared drive and the folder structure for weekly files.
-7. The **email addresses** each company sends from.
-8. Its **financing terms**: model start date and PO advance rate.
-9. The **opening loan balance** for its first week, if no earlier report is on the drive.
-10. One recent **example file** from each company, to confirm the layout is mapped correctly before go-live.
-
-**Access and infrastructure (IT)**
-11. A **dedicated Microsoft 365 mailbox** and app access for the agent ([`NEXT_STEPS.md`](NEXT_STEPS.md), section 3; about an hour for IT).
-12. An **always-on Windows machine or cloud VM** with 8 GB+ memory, with the shared drive synced on it.
-13. A **service account** with add-only permission on the report folders.
-14. **Microsoft sign-in in front of the dashboard** (Entra application proxy, about half a day for IT), so reviewers can use it from their own PCs.
-15. An **Anthropic account** owned by VSCP, with a monthly spending limit.
-
-## 8. What would be built to reach product level
-
-```mermaid
-flowchart LR
-    P0["<b>Today</b><br/>Working pilot on one PC<br/>Gmail · local dashboard"]
-    P1["<b>Phase 1 · Go-live</b><br/>about 1–2 weeks"]
-    P2["<b>Phase 2 · Team product</b><br/>about 2–3 weeks"]
-    P3["<b>Phase 3 · Cloud</b><br/>about 3–5 weeks"]
-    P0 --> P1 --> P2 --> P3
-```
-
-**Phase 1: Go-live at VSCP (about 1–2 weeks, once items 1–13 above are in place)**
-- Connect VSCP's Microsoft 365 mailbox and test it on the real tenant.
-- Move to the always-on machine with the service account and add-only drive permissions.
-- Set up every portfolio company, and approve each new layout map on a real file.
-- Apply VSCP's answer on opening bank cash.
-- **Dead-man's switch:** if the service stops, the team is alerted within 30 minutes.
-- A dry run on last month's files for every company, checked against the analysts' own reports.
-
-**Phase 2: A product for the whole team (about 2–3 weeks)**
-- **Microsoft sign-in** on the dashboard; approvals record the signed-in person.
-- **Per-user access** to companies.
-- **Faster runs:** 2–3 companies in parallel, and no repeated recalculation. 20 companies in under an hour.
-- Optional **deadline alerts** for missing files, and optional Teams notifications.
-- Optional: ask questions about the portfolio data from Claude Desktop (read-only).
-
-**Phase 3: Cloud (about 3–5 weeks)**
-- Run in VSCP's Azure instead of on a PC: no machine to keep on, backups and health alerts included.
-- Read and write SharePoint directly instead of through a synced folder.
-- Start a run the moment an email arrives instead of checking every minute.
-- The dashboard becomes a proper web app with Microsoft sign-in and an audit trail.
-
-**What carries over unchanged** through every phase: Claude's instructions, the checker, the safety rules and the approval step. Only where it runs and how it connects change.
