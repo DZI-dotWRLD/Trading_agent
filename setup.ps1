@@ -1,7 +1,7 @@
 # One-time setup for the VSCP trading-update agent (ADR-0012). Safe to run again.
 #   .\setup.ps1
 # Installs dependencies into .venv, checks for a recalculation engine, creates .env from
-# .env.example if missing, and runs the configuration check. See docs/IMPLEMENTATION.md.
+# .env.example if missing, and runs the configuration check. See README.md.
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 

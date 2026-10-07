@@ -46,7 +46,7 @@ You need:
 | About **3 GB of free memory** while a report is built | Excel files are large | Close other apps if the PC is slow |
 | **Internet access** | To reach the mailbox and Claude | |
 | The **shared drive** with the companies' folders, visible on this PC | Where source files and reports are saved | Usually SharePoint synced through OneDrive, e.g. `C:\Users\<you>\Vesey Street Capital\Portfolio - Documents` |
-| A **mailbox** that only receives the trading updates | The agent reads every email in it | A new Gmail account works today (step 5). Microsoft 365: see [`docs/IT_REQUEST_GRAPH.md`](docs/IT_REQUEST_GRAPH.md) |
+| A **mailbox** that only receives the trading updates | The agent reads every email in it | A new Gmail account works today (step 5). Microsoft 365 needs VSCP's IT first: see [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md), section 3 |
 | An **Anthropic account** with some credit | Claude builds the reports | https://console.anthropic.com (step 4). Each report costs about **$0.40–1.00** |
 
 No administrator rights are needed.
@@ -150,7 +150,7 @@ Use a mailbox that receives **only** the trading updates, for example a new Gmai
 
 > The agent needs the **app password**, not the normal Gmail password.
 
-Using **Microsoft 365** (an `@vscpllc.com` mailbox) instead needs a one-time setup by IT. Send them [`docs/IT_REQUEST_GRAPH.md`](docs/IT_REQUEST_GRAPH.md); the settings are in [`docs/IMPLEMENTATION.md`](docs/IMPLEMENTATION.md), section 5b.
+Using **Microsoft 365** (an `@vscpllc.com` mailbox) instead needs a one-time setup by VSCP's IT. What they do, and what changes in the agent's settings afterwards, is in [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md), section 3.
 
 ## 6. Fill in the secrets file (`.env`)
 
@@ -371,14 +371,12 @@ python -m agent process "C:\path\to\Trading_update_CW38_2026.xlsx" --company Inc
 | `.env.example`, `pyproject.toml`, `uv.lock`, `.streamlit\`, `.gitignore` | Technical files used by the setup | No |
 | `data\` | Created when the agent runs: review queue, logs, history. Stays on this PC, never on the shared drive | No |
 
-**The `docs` folder** is kept because each file serves a reader the README doesn't:
+**The `docs` folder** holds two plain-English documents the README doesn't cover:
 
 | File | For whom | Why it's here |
 |---|---|---|
 | [`HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md) | Anyone at VSCP | Plain-English explanation with diagrams: what the agent does, what's finished, its limits, and what VSCP needs to provide to make it a full product |
-| [`IMPLEMENTATION.md`](docs/IMPLEMENTATION.md) | IT, or whoever maintains the agent | The technical guide: Microsoft 365, file permissions, sharing the dashboard, monitoring, moving to the cloud, go-live checklist |
-| [`IT_REQUEST_GRAPH.md`](docs/IT_REQUEST_GRAPH.md) | VSCP's IT | The ready-to-send request for connecting a Microsoft 365 mailbox safely |
-| [`QUESTIONS_FOR_VSCP.md`](docs/QUESTIONS_FOR_VSCP.md) | The deal team | One open question about the sample report (opening bank cash) that changes the numbers. Answer before relying on the Cash Schedule |
+| [`NEXT_STEPS.md`](docs/NEXT_STEPS.md) | VSCP management, the deal team and IT | What the project needs to move forward and why, why it was tested on Gmail rather than Microsoft 365, what switching to Microsoft 365 takes, and the questions VSCP needs to answer to continue |
 
 **Why there is no `samples` folder:** the sample workbooks VSCP provided contain a portfolio company's real financial figures. The agent doesn't need them to run (the report layout and look are built into the program), so they are deliberately left out of this download.
 
@@ -390,4 +388,4 @@ python -m agent process "C:\path\to\Trading_update_CW38_2026.xlsx" --company Inc
 - **What leaves the PC:** each run sends that week's workbook (and last week's, for the comparison) to Anthropic's API. Nothing else on the drive is sent. Check this fits VSCP's data policy.
 - **The shared drive is only added to:** the agent saves new files and never overwrites or deletes anything.
 - **Claude works on copies** in a sealed folder on this PC. It cannot reach the drive, the mailbox or the internet.
-- **To confirm with VSCP:** the Cash Schedule opens bank cash from the company's **total** bank cash, not the single account the sample used. See [`docs/QUESTIONS_FOR_VSCP.md`](docs/QUESTIONS_FOR_VSCP.md).
+- **To confirm with VSCP:** the Cash Schedule opens bank cash from the company's **total** bank cash, not the single account the sample used. See [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md), question 10.

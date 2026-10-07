@@ -2,7 +2,7 @@
 
 ``ImapSmtpMailbox`` works with Gmail (app password) and any IMAP provider that still
 accepts password login; Microsoft 365 generally does not, so it uses ``agent.mail.graph.GraphMailbox``
-(``type: graph``), which implements the same two methods (fetch_new, send); see docs/IMPLEMENTATION.md section 5b.
+(``type: graph``), which implements the same two methods (fetch_new, send); see docs/NEXT_STEPS.md section 3.
 """
 from __future__ import annotations
 

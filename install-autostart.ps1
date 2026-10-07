@@ -3,7 +3,7 @@
 #   .\install-autostart.ps1 -Dashboard   also register "VSCP Dashboard" (localhost:8501)
 #   .\install-autostart.ps1 -Uninstall   remove both tasks
 # Runs as the current user, so no admin rights are needed. For production, run it while logged on
-# as the dedicated service account (docs/IMPLEMENTATION.md, section 10).
+# as the dedicated service account (docs/NEXT_STEPS.md, section 4).
 param([switch]$Dashboard, [switch]$Uninstall)
 $ErrorActionPreference = "Stop"
 

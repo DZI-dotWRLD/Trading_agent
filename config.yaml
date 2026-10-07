@@ -18,7 +18,7 @@ poll_minutes: 1                  # 1 for the demo; 5 is plenty in production
 timezone: America/New_York      # for timestamps in state.json and emails
 
 mailbox:
-  type: imap                    # imap: Gmail or any password-login IMAP; graph: Microsoft 365 (docs/IMPLEMENTATION.md 5b)
+  type: imap                    # imap: Gmail or any password-login IMAP; graph: Microsoft 365 (docs/NEXT_STEPS.md, section 3)
   imap_host: imap.gmail.com
   smtp_host: smtp.gmail.com
   user_env: MAIL_USER           # names of the .env variables holding the credentials

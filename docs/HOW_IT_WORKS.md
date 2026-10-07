@@ -2,7 +2,7 @@
 
 A plain-English guide for the VSCP team: what the agent does, what is finished at this stage, what it can't do yet, and what VSCP needs to provide to turn it into a finished product.
 
-For installation, see the main [`README.md`](../README.md). For the technical details, see [`IMPLEMENTATION.md`](IMPLEMENTATION.md).
+For installation, see the main [`README.md`](../README.md). For what the project needs next and the open questions, see [`NEXT_STEPS.md`](NEXT_STEPS.md).
 
 ---
 
@@ -146,13 +146,13 @@ flowchart LR
 | **One report at a time** | 20 companies arriving at once take about 2 hours | Process 2–3 in parallel on a dedicated machine |
 | **Only the trading-update template** | A completely different kind of report (e.g. a monthly board pack) needs new instructions and checks | New "skill" per report type |
 | **No deadline alerts** | No "Company X hasn't sent its file by Monday" email (a deliberate choice for now) | Add if VSCP wants it |
-| **The opening bank cash question** | The Cash Schedule uses the company's total bank cash; the sample used one account | VSCP answers [`QUESTIONS_FOR_VSCP.md`](QUESTIONS_FOR_VSCP.md) |
+| **The opening bank cash question** | The Cash Schedule uses the company's total bank cash; the sample used one account | VSCP answers [`NEXT_STEPS.md`](NEXT_STEPS.md), question 10 |
 | **Data goes to Anthropic** | Each week's workbook is sent to Anthropic's API | VSCP confirms this fits its data policy |
 
 ## 7. What VSCP needs to provide
 
 **Answers and decisions**
-1. **The opening bank cash question** in [`QUESTIONS_FOR_VSCP.md`](QUESTIONS_FOR_VSCP.md): total bank cash or one account, and whether it should open at the model start date.
+1. **The opening bank cash question** ([`NEXT_STEPS.md`](NEXT_STEPS.md), questions 10–11): total bank cash or one account, and whether it should open at the model start date.
 2. **Data policy approval** for sending the weekly workbooks to Anthropic's API under VSCP's own Anthropic account.
 3. **Who reviews and approves** reports, and whether some reviewers should see only some companies.
 4. **One house style or each company's own look** for the generated tabs.
@@ -166,7 +166,7 @@ flowchart LR
 10. One recent **example file** from each company, to confirm the layout is mapped correctly before go-live.
 
 **Access and infrastructure (IT)**
-11. A **dedicated Microsoft 365 mailbox** and the app access in [`IT_REQUEST_GRAPH.md`](IT_REQUEST_GRAPH.md) (about an hour for IT).
+11. A **dedicated Microsoft 365 mailbox** and app access for the agent ([`NEXT_STEPS.md`](NEXT_STEPS.md), section 3; about an hour for IT).
 12. An **always-on Windows machine or cloud VM** with 8 GB+ memory, with the shared drive synced on it.
 13. A **service account** with add-only permission on the report folders.
 14. **Microsoft sign-in in front of the dashboard** (Entra application proxy, about half a day for IT), so reviewers can use it from their own PCs.

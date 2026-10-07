@@ -1,4 +1,4 @@
-"""Microsoft 365 mailbox through Microsoft Graph (ADR-0002, docs/IMPLEMENTATION.md section 5b).
+"""Microsoft 365 mailbox through Microsoft Graph (ADR-0002, docs/NEXT_STEPS.md section 3).
 
 App-only access (client credentials) to ONE mailbox, with the application permissions Mail.Read and
 Mail.Send, which VSCP's admin scopes to that mailbox. Same two methods as ``ImapSmtpMailbox``:

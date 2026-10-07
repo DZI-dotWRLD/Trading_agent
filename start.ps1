@@ -2,7 +2,7 @@
 #   .\start.ps1                     run the service
 #   .\start.ps1 -Check              only check configuration, credentials and folders
 #   .\start.ps1 -Config other.yaml  use another config file
-# Logs go to the console and to data\service.log. See docs/IMPLEMENTATION.md, section 6.
+# Logs go to the console and to data\service.log. See README.md, section 10.
 param([switch]$Check, [string]$Config = "")
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
