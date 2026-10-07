@@ -384,7 +384,7 @@ python -m agent process "C:\path\to\Trading_update_CW38_2026.xlsx" --company Inc
 
 ## Costs, data and safety
 
-- **Cost:** about $0.40–1.00 of Claude usage per weekly report; learning a new company's layout once costs about $1.50. Each run is capped at $5 (`max_budget_usd` in `config.yaml`).
+- **Cost:** about $0.60–1.20 of Claude usage per weekly report; learning a new company's layout once costs about $1.50. Each run is capped at $5 (`max_budget_usd` in `config.yaml`).
 - **What leaves the PC:** each run sends that week's workbook (and last week's, for the comparison) to Anthropic's API. Nothing else on the drive is sent. Check this fits VSCP's data policy.
 - **The shared drive is only added to:** the agent saves new files and never overwrites or deletes anything.
 - **Claude works on copies** in a sealed folder on this PC. It cannot reach the drive, the mailbox or the internet.
