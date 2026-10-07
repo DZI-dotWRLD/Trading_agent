@@ -93,7 +93,7 @@ Change only what this guide tells you to, then **File > Save** (Ctrl+S) and clos
 
 From now on, "the agent's folder" means `C:\VSCP_trading_agent`.
 
-> Already use git? `git clone <link> C:\VSCP_trading_agent` does the same.
+`git clone <link> C:\VSCP_trading_agent` does the same.
 
 ## 2. Install two programs
 
