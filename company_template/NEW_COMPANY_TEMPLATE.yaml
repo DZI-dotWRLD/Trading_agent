@@ -1,0 +1,65 @@
+# =====================================================================================
+#  NEW PORTFOLIO COMPANY — TEMPLATE
+# =====================================================================================
+#  How to use this file (full steps: README.md, step 6):
+#    1. COPY this file into the "companies" folder (do not move it; keep this template).
+#    2. RENAME the copy to the company's name, lowercase, no spaces, ending in .yaml
+#       for example:  companies\meridian.yaml
+#    3. Open the copy in Notepad and replace every CHANGE_ME value below.
+#       Look at EXAMPLE_FILLED_IN.yaml in this folder to see what finished values look like.
+#    4. Save, then run  .\start.ps1 -Check  — it lists anything still left to fill in.
+#
+#  Rules for editing:
+#    - Change only the text AFTER the colon ( : ). Never change the words before it.
+#    - Keep the spaces at the start of each line exactly as they are.
+#    - Lines starting with # are notes; the agent ignores them.
+#    - Keep the "quotes" where they are shown.
+# =====================================================================================
+
+# The company's folder name on the shared drive, spelled EXACTLY as the folder is named
+# (same capitals, same spaces). Its weekly files are read from and saved to:
+#   <Portfolio folder>\<this name>\Trading Updates\<year>
+key: "CHANGE_ME Folder Name"
+
+# The company's full name, as you want it shown in emails and on the dashboard.
+display_name: "CHANGE_ME Company Full Name"
+
+# The short name the company uses INSIDE its Excel file, e.g. in labels like "Meridian Holdco".
+# If unsure, use the same short name as the folder.
+name: "CHANGE_ME Short Name"
+
+# Leave this as true: the agent builds this company's weekly report.
+pipeline: true
+
+# The email address(es) this company sends its weekly Excel file FROM.
+# ONLY emails from these addresses are processed; everything else is ignored.
+# One address per line, each line starting with "  - ". An address may belong to one company only.
+# If someone forwards the file to the agent, add the forwarding person's address too.
+senders:
+  - CHANGE_ME_sender@company.com
+  # - second.sender@company.com        <- remove the # at the start to add a second address
+
+# The name of the Excel file the company attaches. Leave as it is if they send
+# "Trading_update_CW38_2026.xlsx" style names (CW = calendar week).
+filename_pattern: 'Trading_update_CW\d{2}_\d{4}(_r\d+)?\.xls[xm]'
+
+# This company's financing terms. Ask the deal team if you don't know them.
+assumptions:
+  # The date this company's cash model starts, written as "YYYY-MM-DD" in quotes.
+  model_start_date: "CHANGE_ME YYYY-MM-DD"
+
+  # How much the lender advances against purchase orders, as a number (no % sign).
+  # Example: 121% is written 1.21
+  po_advance_rate: CHANGE_ME
+
+  # How many weeks ahead the cash schedule looks. 28 is the standard; leave it.
+  forward_weeks: 28
+
+  # FIRST WEEK ONLY. Each week's loan balance continues from last week's "_vClaude" report in the
+  # company's folder. If that report is NOT there for the first week, remove the # at the start of
+  # the next line and type the "Loans - BoP" figure (in EUR, no commas) from the last report you trust.
+  # Put the # back after the first week is approved.
+  # opening_loan_balance_eur: 0.00
+
+# Which dashboard panels to show for this company. Leave as it is.
+panels: [overview, revenue_gp, customers, cash, reports]

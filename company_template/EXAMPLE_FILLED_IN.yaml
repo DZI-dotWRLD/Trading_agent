@@ -1,0 +1,24 @@
+# EXAMPLE ONLY — a made-up company, to show what a finished file looks like.
+# This file is NOT used by the agent. Start from NEW_COMPANY_TEMPLATE.yaml instead.
+#
+# On the shared drive, this company's weekly files would be in:
+#   <Portfolio folder>\Meridian Health\Trading Updates\2026
+
+key: "Meridian Health"
+display_name: "Meridian Health Group"
+name: "Meridian"
+pipeline: true
+
+senders:
+  - finance@meridian-health.example
+  - cfo@meridian-health.example
+
+filename_pattern: 'Trading_update_CW\d{2}_\d{4}(_r\d+)?\.xls[xm]'
+
+assumptions:
+  model_start_date: "2026-06-01"
+  po_advance_rate: 1.21
+  forward_weeks: 28
+  # opening_loan_balance_eur: 5000000.00
+
+panels: [overview, revenue_gp, customers, cash, reports]

@@ -1,0 +1,20 @@
+# Dashboard look (ADR-0020): a printed board pack rather than a web app.
+# Fonts load from Google Fonts; without internet the browser falls back to Georgia / Segoe UI.
+[theme]
+base = "light"
+primaryColor = "#2f62a8"
+backgroundColor = "#faf9f6"
+secondaryBackgroundColor = "#f3f1ec"
+textColor = "#1d2125"
+linkColor = "#2f62a8"
+borderColor = "#dcd8cf"
+dataframeBorderColor = "#dcd8cf"
+dataframeHeaderBackgroundColor = "#f3f1ec"
+showWidgetBorder = true
+baseRadius = "small"
+font = "IBM Plex Sans:https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+headingFont = "Source Serif 4:https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+chartCategoricalColors = ["#2f62a8", "#c27a1e"]
+
+[client]
+toolbarMode = "minimal"

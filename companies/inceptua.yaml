@@ -1,0 +1,22 @@
+key: Inceptua                    # folder name under root
+display_name: Inceptua Group
+name: Inceptua                   # the name used inside its workbooks' labels (e.g. "Inceptua Holdco")
+pipeline: true                   # runs the weekly trading-update skill
+
+# Only emails from these addresses are processed (ADR-0008). Must not be empty.
+senders:
+  - CHANGE_ME_inceptua_sender@example.com   # <- CHANGE: the address Inceptua sends the weekly file from (one line per address)
+
+# Attachment names that count as a trading update.
+filename_pattern: 'Trading_update_CW\d{2}_\d{4}(_r\d+)?\.xls[xm]'   # .xlsm accepted; macros never run
+
+# Model assumptions passed to the skill (run_context.json). Opening loan balance is carried
+# from last week's _vClaude output in the company's folder on the drive. If that file isn't there
+# for the first week, set opening_loan_balance_eur, and remove it after that week is approved.
+assumptions:
+  model_start_date: "2026-06-01"
+  po_advance_rate: 1.21
+  forward_weeks: 28
+  # opening_loan_balance_eur: 12465873.39   # "Loans - BoP" from the last output you trust
+
+panels: [overview, revenue_gp, customers, cash, reports]

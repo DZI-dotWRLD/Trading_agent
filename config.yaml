@@ -1,0 +1,36 @@
+# VSCP Trading-Update Agent — service configuration.
+# Relative paths are relative to this file. Secrets live in .env, never here.
+
+# The shared drive's Portfolio folder (or its locally synced copy). Paste the path between the two
+# ' marks, without the " marks Windows adds; backslashes are fine. README.md, step 7.
+# e.g. 'C:\Users\<you>\Vesey Street Capital\Portfolio - Documents'
+root: 'CHANGE_ME_path_to_portfolio_folder'   # <- CHANGE
+
+# Where each company's weekly files live under root. {root}, {company} (folder name) and {year}.
+path_template: "{root}/{company}/Trading Updates/{year}"
+
+companies_dir: companies        # one <company>.yaml per portfolio company
+runs_dir: data/_runs            # agent workspaces + transcripts; must be OUTSIDE root
+review_dir: data/review         # validated outputs waiting for a reviewer; must be OUTSIDE root
+state_file: data/state.json     # processed emails + inbox health
+
+poll_minutes: 1                  # 1 for the demo; 5 is plenty in production
+timezone: America/New_York      # for timestamps in state.json and emails
+
+mailbox:
+  type: imap                    # imap: Gmail or any password-login IMAP; graph: Microsoft 365 (docs/IMPLEMENTATION.md 5b)
+  imap_host: imap.gmail.com
+  smtp_host: smtp.gmail.com
+  user_env: MAIL_USER           # names of the .env variables holding the credentials
+  password_env: MAIL_APP_PASSWORD
+  lookback_days: 7
+
+notify:
+  to:
+    - CHANGE_ME_your_email@example.com  # <- CHANGE: who receives the "Review needed" and failure emails (add more lines for more people)
+
+dashboard_url: "http://localhost:8501"   # link in the "report ready" email; empty = no link
+
+agent:                          # passed to the Claude runner
+  max_turns: 80
+  max_budget_usd: 5
