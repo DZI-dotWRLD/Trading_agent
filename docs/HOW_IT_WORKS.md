@@ -24,28 +24,28 @@ Every week, each portfolio company emails VSCP an Excel "trading update". Today 
 
 ```mermaid
 flowchart TD
-    A["📧 Portfolio company emails its weekly Excel file"] --> B{"Is the sender on a company's list,<br/>and is the file named like a trading update?"}
+    A["Portfolio company emails its weekly Excel file"] --> B{"Is the sender on a company's list,<br/>and is the file named like a trading update?"}
     B -- No --> B1["Ignored and logged.<br/>Nothing else happens."]
-    B -- Yes --> C["💾 Source file saved to the company's folder<br/>on the shared drive (add only, never overwrites)"]
+    B -- Yes --> C["Source file saved to the company's folder<br/>on the shared drive (add only, never overwrites)"]
     C --> D{"Is last week's report approved?"}
-    D -- "Not yet" --> D1["⏸ On hold, email to the team.<br/>Starts by itself once last week is approved."]
+    D -- "Not yet" --> D1["On hold, email to the team.<br/>Starts by itself once last week is approved."]
     D1 -.-> D
-    D -- Yes --> E["📋 Copy the file into a sealed work folder"]
+    D -- Yes --> E["Copy the file into a sealed work folder"]
     E --> F{"Does the agent already know<br/>this company's Excel layout?"}
-    F -- "No (first file)" --> F1["🔎 Claude maps where each number is.<br/>The map is checked, and approved with the first report."]
+    F -- "No (first file)" --> F1["Claude maps where each number is.<br/>The map is checked, and approved with the first report."]
     F1 --> G
-    F -- Yes --> G["🤖 Claude builds 4 new tabs as live formulas:<br/>Cash Schedule · Weekly summary · Monthly summary · Week vs last week"]
-    G --> H["🔁 Claude runs a self-check and fixes its own mistakes"]
-    H --> I["🧮 Independent checker: recalculates the file in LibreOffice<br/>and checks every number, label and formula"]
+    F -- Yes --> G["Claude builds 4 new tabs as live formulas:<br/>Cash Schedule · Weekly summary · Monthly summary · Week vs last week"]
+    G --> H["Claude runs a self-check and fixes its own mistakes"]
+    H --> I["Independent checker: recalculates the file in LibreOffice<br/>and checks every number, label and formula"]
     I -- "Fails" --> I1{"First failure?"}
     I1 -- Yes --> G
-    I1 -- "No, failed twice" --> X["⚠️ ACTION NEEDED email with the reason.<br/>Nothing saved to the drive."]
-    I -- "Passes" --> J["📥 Review queue (on this PC, not on the drive)<br/>+ 'Review needed' email with the report attached"]
-    J --> K{"👤 A team member reviews it on the dashboard"}
-    K -- Reject --> K1["❌ 'Rejected, not saved' email.<br/>Nothing saved to the drive."]
-    K -- "Approve and publish" --> L["🔒 Service confirms the file is exactly the one that passed"]
-    L --> M["✅ Report saved next to the source file<br/>+ 'Approved and saved' email"]
-    M --> N["📊 Dashboard updates the company's figures"]
+    I1 -- "No, failed twice" --> X["ACTION NEEDED email with the reason.<br/>Nothing saved to the drive."]
+    I -- "Passes" --> J["Review queue (on this PC, not on the drive)<br/>+ 'Review needed' email with the report attached"]
+    J --> K{" A team member reviews it on the dashboard"}
+    K -- Reject --> K1["'Rejected, not saved' email.<br/>Nothing saved to the drive."]
+    K -- "Approve and publish" --> L["Service confirms the file is exactly the one that passed"]
+    L --> M["Report saved next to the source file<br/>+ 'Approved and saved' email"]
+    M --> N["Dashboard updates the company's figures"]
     M -.->|"next week's file builds on this one"| D
 ```
 
