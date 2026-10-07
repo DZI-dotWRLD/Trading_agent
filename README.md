@@ -13,28 +13,6 @@ Every week, each portfolio company emails VSCP an Excel "trading update". This a
 
 **Want to understand how it works first?** Read [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md): a plain-English description, with diagrams, of what it does, what is finished, its limits, and what is needed to turn it into a full product.
 
----
-
-## Contents
-
-| Step | What you do | Time |
-|---|---|---|
-| [0. Before you start](#0-before-you-start) | Check you have everything | 2 min |
-| [1. Download](#1-download-the-agent) | Download and unzip this folder | 2 min |
-| [2. Install two programs](#2-install-two-programs) | uv and LibreOffice | 10 min |
-| [3. Run the setup](#3-run-the-setup) | One command | 5 min |
-| [4. Claude API key](#4-get-a-claude-api-key) | Create a key on the Anthropic website | 5 min |
-| [5. The mailbox](#5-prepare-the-mailbox-gmail) | Create a Gmail app password | 5 min |
-| [6. Fill in `.env`](#6-fill-in-the-secrets-file-env) | Key, mailbox, password | 2 min |
-| [7. Fill in `config.yaml`](#7-fill-in-the-settings-file-configyaml) | Shared drive folder, who gets emails | 3 min |
-| [8. Set up the companies](#8-set-up-the-portfolio-companies) | Inceptua, and any others | 5 min per company |
-| [9. Check](#9-check-everything) | One command | 1 min |
-| [10. Start](#10-start-the-agent) | One command | 1 min |
-| [11. Every week](#11-every-week-reviewing-a-report) | Review and approve | 5 min a week |
-| [12. If something goes wrong](#12-if-something-goes-wrong) | | |
-| [13. What's in this folder](#13-whats-in-this-folder) | | |
-
----
 
 ## 0. Before you start
 
