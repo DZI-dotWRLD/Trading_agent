@@ -11,7 +11,7 @@ Every week, each portfolio company emails VSCP an Excel "trading update". This a
 
 > **Nothing is saved to the shared drive until a person approves it.** The agent never runs Excel macros and only emails the addresses you list.
 
-**Want to understand how it works first?** Read [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md): a plain-English description, with diagrams, of what it does, what is finished, its limits, and what is needed to turn it into a full product.
+**Want to understand how it works first?** Read [`docs/HOW_IT_WORKS.md`](docs/HOW_IT_WORKS.md): a description, with diagrams, of what it does, what is finished, its limits, and what is needed to turn it into a full product.
 
 
 ## 0. Before you start
@@ -349,7 +349,7 @@ python -m agent process "C:\path\to\Trading_update_CW38_2026.xlsx" --company Inc
 | `.env.example`, `pyproject.toml`, `uv.lock`, `.streamlit\`, `.gitignore` | Technical files used by the setup | No |
 | `data\` | Created when the agent runs: review queue, logs, history. Stays on this PC, never on the shared drive | No |
 
-**The `docs` folder** holds two plain-English documents the README doesn't cover:
+**The `docs` folder** holds two documents the README doesn't cover:
 
 | File | For whom | Why it's here |
 |---|---|---|
